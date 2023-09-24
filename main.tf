@@ -1,4 +1,18 @@
 terraform {
+  #backend "remote" {
+  #  hostname = "app.terraform.io"
+  #  organization = "EmmanuelEloka-terraform-bootcamp"
+
+  #  workspaces {
+  #    name = "terra-house-eloka"
+  #  }
+  #}
+  cloud {
+    organization = "EmmanuelEloka-terraform-bootcamp"
+    workspaces {
+      name = "terra-house-eloka"
+    }
+  }
   required_providers {
     random = {
       source = "hashicorp/random"
