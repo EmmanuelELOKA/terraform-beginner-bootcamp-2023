@@ -180,6 +180,12 @@ This will generate out a changeset, about the state of our infrastructure and wh
 
 We can output this changeset ie. "plan" to be passed to an apply, but often you can just ignore outputting.
 
+### Terraform Destroy
+`teraform destroy` 
+This will destroy resources.
+
+You can alos use the auto approve flag to skip the approve prompt eg. `terraform apply --auto-approve`
+
 ### Terraform Apply
 `terraform apply`
 
