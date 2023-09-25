@@ -1,1 +1,77 @@
 # Terraform Beginner Bootcamp 2023 - Week 1
+
+## Root Module Structure
+
+Our root module structure is as follows:
+```
+PROJECT_ROOT
+│
+├── main.tf                 # everything else.
+├── variables.tf            # stores the structure of input variables
+├── terraform.tfvars        # the data of variables we want to load into our terraform project
+├── providers.tf            # defined required providers and their configuration
+├── outputs.tf              # stores our outputs
+└── README.md               # required for root modules
+
+```
+[Standard Module Structure](https://developer.hashicorp.com/terraform/language/modules/develop/structure)
+
+## Terraform and Input Variables
+
+### Terraform Cloud Variables
+
+In terraform we can set two kind of variables:
+
+- Enviroment Variables - those you would set in your bash terminal eg. AWS credentials
+- Terraform Variables - those that you would normally set in your tfvars file
+  
+We can set Terraform Cloud variables to be sensitive so they are not shown visibliy in the UI.
+
+### Loading Terraform Input Variables
+
+[Terraform Input Variables](https://developer.hashicorp.com/terraform/language/values/variables)
+
+### var flag
+We can use the `-var` flag to set an input variable or override a variable in the tfvars file eg. `terraform -var user_ud="my-user_id"`
+
+### var-file flag
+The var-file flag is used to specify an external variables file during the execution of a Terraform configuration. This flag allows you to separate your variable values from your configuration files, which can be useful for keeping sensitive or environment-specific information separate from your infrastructure code. You use the var-file flag when running Terraform commands like terraform apply or terraform plan to pass in the variable values stored in the external file. For example: `terraform apply -var-file="my-vars.tfvars"`
+
+### terraform.tvfars
+This is the default file to load in terraform variables in blunk
+
+### auto.tfvars
+`auto.tfvars` is a special filename used for automatically loading variable values. It's a feature that simplifies the process of providing variable values to your Terraform configurations. Terraform automatically loads variable values from a file named auto.tfvars in the same directory as your Terraform configuration files. This means you don't need to explicitly specify the variable file when running Terraform commands like `apply` or `plan`.
+
+### Order of Terraform Variables
+In Terraform, the order of variables is important when it comes to variable declaration and usage within your configuration files.
+
+Variables are typically declared at the beginning of your Terraform configuration. This is done in a variables block within a `.tf file`, often named `variables.tf`. Here, you specify the name, type, and optional default values for each variable.
+```
+variable "example_var" {
+  type    = string
+  default = "default_value"
+}
+```
+After declaring variables, you can assign values to these variables in several ways:
+
+1. Direct Assignment: You can assign values directly within the configuration, either by specifying the value inline or referencing other resources' attributes or outputs.
+```
+resource "example_resource" "example" {
+  some_property = var.example_var
+}
+```
+2. Variable Files: You can use variable files, such as `terraform.tfvars` or `auto.tfvars`, to assign values to variables outside of your configuration files. These variable files are written in HashiCorp Configuration Language (HCL) or JSON format and contain variable-value pairs.
+
+Terraform follows a specific order of precedence when resolving variable values. It prioritizes variable values based on the following order (from highest to lowest precedence):
+
+a. Explicitly set values within the configuration.
+b. Values provided in variable files (e.g., `terraform.tfvars`, `auto.tfvars`).
+c. Default values specified in the variable declaration.
+
+Once variable values are declared and assigned, you can use these variables throughout your configuration to make your infrastructure dynamic and reusable. Variables can be interpolated using the var keyword.
+```
+resource "example_resource" "example" {
+  some_property = var.example_var
+}
+```
