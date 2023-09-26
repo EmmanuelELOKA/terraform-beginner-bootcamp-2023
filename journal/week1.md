@@ -232,6 +232,7 @@ They are not recommended for use by Hashicorp because Configuration Management t
 [Provisioners](https://developer.hashicorp.com/terraform/language/resources/provisioners/syntax)
 
 ### Local-exec
+[Local-Exec](https://developer.hashicorp.com/terraform/language/resources/provisioners/local-exec)
 This will execute command on the machine running the terraform commands eg. plan apply
 ```
 resource "aws_instance" "web" {
