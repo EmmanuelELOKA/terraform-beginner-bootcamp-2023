@@ -68,6 +68,7 @@ resource "terraform_data" "invalidate_cache" {
   triggers_replace = terraform_data.content_version.output
 
   provisioner "local-exec" {
+    #very important functionality
     # https://developer.hashicorp.com/terraform/language/expressions/strings#heredoc-strings
     command = <<COMMAND
 aws cloudfront create-invalidation \
