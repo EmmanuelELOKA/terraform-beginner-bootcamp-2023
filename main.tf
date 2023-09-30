@@ -7,12 +7,12 @@ terraform {
   #    name = "terra-house-eloka"
   #  }
   #}
-  #cloud {
-  #  organization = "EmmanuelEloka-terraform-bootcamp"
-  #  workspaces {
-  #    name = "terra-house-eloka"
-  #  }
-  #}
+  cloud {
+    organization = "EmmanuelEloka-terraform-bootcamp"
+    workspaces {
+      name = "terraform-cloud"
+    }
+  }
 
 }
 
