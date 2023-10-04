@@ -45,7 +45,7 @@ Modders have removed all the originals making this game really fun
 to play (despite that old look graphics). This is my guide that will
 show you how to play arcanum without spoiling the plot.
 DESCRIPTION
-  #domain_name = module.terrahouse_aws.cloudfront_url
+  #domain_name = module.terrahouse_aws.cloudfront_url(important)
   domain_name = "3fdq3gz.cloudfront.net"
   town = "gamers-grotto"
   content_version = 1

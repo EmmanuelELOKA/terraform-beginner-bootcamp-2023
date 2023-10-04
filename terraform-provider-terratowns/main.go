@@ -148,7 +148,7 @@ func resourceHouseCreate(ctx context.Context, d *schema.ResourceData, m interfac
 
 	url :=  config.Endpoint+"/u/"+config.UserUuid+"/homes"
 	log.Print("URL: "+ url)
-	// Construct the HTTP Request
+	// Construct the HTTP Requests
 	req, err := http.NewRequest("POST", url, bytes.NewBuffer(payloadBytes))
 	if err != nil {
 		return diag.FromErr(err)
