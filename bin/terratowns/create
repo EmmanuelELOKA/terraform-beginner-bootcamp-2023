@@ -8,7 +8,7 @@ domain_name="3xf332sdfs.cloudfront.net"
 town="cooker-cove"
 content_version=1
 
-# Enable printing of commands
+# Enable printing of commands(important)
 #set -x
 
 RESPONSE=$(curl -X POST \
