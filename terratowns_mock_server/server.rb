@@ -77,7 +77,7 @@ class TerraTownsMockServer < Sinatra::Base
   end
 
   def x_user_uuid
-    return 'e328f4ab-b99f-421c-84c9-4ccea042c7d1'
+    return '84713f63-6c1d-4544-b429-687d3794d607'
   end
 
   def find_user_by_bearer_token
