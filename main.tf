@@ -13,12 +13,12 @@ terraform {
   #    name = "terra-house-eloka"
   #  }
   #}
-  #cloud {
-  #  organization = "EmmanuelEloka-terraform-bootcamp"
-  #  workspaces {
-  #    name = "terra-house-eloka"
-  #  }
-  #}
+  cloud {
+    organization = "EmmanuelEloka-terraform-bootcamp"
+    workspaces {
+      name = "terra-house-eloka"
+    }
+  }
 
 }
 
@@ -28,25 +28,49 @@ provider "terratowns" {
   token = var.terratowns_access_token
 }
 
-module "terrahouse_aws" {
-  source = "./modules/terrahouse_aws"
+module "home_arcanum_hosting" {
+  source = "./modules/terrahome_aws"
   user_uuid = var.teacherseat_user_uuid
-  index_html_filepath = var.index_html_filepath
-  error_html_filepath = var.error_html_filepath
-  content_version = var.content_version
-  assets_path = var.assets_path
+  public_path = var.arcanum.public_path
+  content_version = var.arcanum.content_version
 }
 
 resource "terratowns_home" "home" {
   name = "How to play Arcanum in 2023!"
   description = <<DESCRIPTION
-Arcanum is a game from 2001 that shipped with alot of bugs.
-Modders have removed all the originals making this game really fun
-to play (despite that old look graphics). This is my guide that will
-show you how to play arcanum without spoiling the plot.
+Arcanum, a 2001 title, was initially plagued by a plethora of bugs upon its release. 
+However, dedicated modders have painstakingly eradicated these issues, resulting in 
+an immensely enjoyable gaming experience, even if the graphics appear somewhat dated. 
+Here is my comprehensive guide, which will assist you in playing Arcanum without 
+revealing any spoilers from the plot.
 DESCRIPTION
   #domain_name = module.terrahouse_aws.cloudfront_url(important)
-  domain_name = module.terrahouse_aws.cloudfront_url
+  domain_name = module.home_arcanum_hosting.domain_name
   town = "missingo"
-  content_version = 1
+  content_version = var.arcanum.content_version
+}
+
+module "home_zanzibar_hosting" {
+  source = "./modules/terrahome_aws"
+  user_uuid = var.teacherseat_user_uuid
+  public_path = var.zanzibar.public_path
+  content_version = var.zanzibar.content_version
+}
+
+resource "terratowns_home" "home_zanzibar" {
+  name = "Visiting ZANZIBAR in 2023!"
+  description = <<DESCRIPTION
+Embark on a mesmerizing journey to the enchanting island of Zanzibar, where the 
+turquoise waters of the Indian Ocean meet the rich tapestry of Swahili culture. 
+Explore this hidden gem and discover pristine beaches, spice markets, and historic 
+sites. Our comprehensive Zanzibar travel guide will help you uncover the island's 
+most breathtaking attractions, indulge in exquisite local cuisine, and immerse 
+yourself in the vibrant history and traditions of this captivating destination. 
+Join us on an unforgettable adventure to Zanzibar, where every moment is a 
+postcard-worthy memory waiting to be captured
+DESCRIPTION
+  #domain_name = module.terrahouse_aws.cloudfront_url(important)
+  domain_name = module.home_zanzibar_hosting.domain_name
+  town = "missingo"
+  content_version = var.zanzibar.content_version
 }
