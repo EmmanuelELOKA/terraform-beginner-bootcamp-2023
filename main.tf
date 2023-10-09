@@ -46,7 +46,7 @@ revealing any spoilers from the plot.
 DESCRIPTION
   #domain_name = module.terrahouse_aws.cloudfront_url(important)
   domain_name = module.home_arcanum_hosting.domain_name
-  town = "missingo"
+  town = "gamers-grotto"
   content_version = var.arcanum.content_version
 }
 
@@ -71,6 +71,6 @@ postcard-worthy memory waiting to be captured
 DESCRIPTION
   #domain_name = module.terrahouse_aws.cloudfront_url(important)
   domain_name = module.home_zanzibar_hosting.domain_name
-  town = "missingo"
+  town = "the-nomad-pad"
   content_version = var.zanzibar.content_version
 }
