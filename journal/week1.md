@@ -76,6 +76,8 @@ PROJECT_ROOT
 
 ### Terraform Cloud Variables
 
+Terraform Cloud (formerly known as Terraform Enterprise) is a platform provided by HashiCorp for collaborating on and managing infrastructure as code. Terraform Cloud provides a way to centralize and automate your Terraform workflows, including variables management. In Terraform Cloud, variables are used to configure and parameterize your Terraform configurations.
+
 In terraform we can set two kind of variables:
 
 - Enviroment Variables - those you would set in your bash terminal eg. AWS credentials
@@ -135,11 +137,16 @@ resource "example_resource" "example" {
 
 ### What happens if we lose our state file?
 
+If you lose your Terraform state file, it can result in a significant issue that can lead to problems with your infrastructure management. The state file is a critical component of Terraform, as it stores the current state of your infrastructure resources and their mapping to your Terraform configuration. Losing the state file can have various consequences.
+
 If you lose your statefile, you most likley have to tear down all your cloud infrastructure manually.
 
 You can use terraform port but it won't for all cloud resources. You need check the terraform providers documentation for which resources support import.
 
 ### Fix Missing Resources with Terraform Import
+
+Terraform Import is a feature that allows you to import existing infrastructure resources into your Terraform configuration. This is particularly useful when you have resources that were created outside of Terraform, and you want to start managing them with Terraform without recreating them.
+
 ```
 terraform import aws_s3_bucket.bucket bucket-name
 ```
@@ -158,6 +165,8 @@ terraform apply -refresh-only -auto-approve
 ```
 
 ## Terraform Modules
+
+Terraform Modules are a way to encapsulate and reuse parts of your Terraform configurations. They allow you to create reusable and shareable components that define resources, input variables, and outputs. Modules help make your Terraform code more modular, maintainable, and scalable, particularly for larger infrastructure deployments and when working on team projects.
 
 ### Terraform Module Structure
 
